@@ -4,11 +4,12 @@
 require __DIR__.'/vendor/autoload.php';
 require __DIR__.'/config/bootstrap.php';
 
+use NapoleonCat\Kernel;
 use Symfony\Component\Console\Application;
-$application = new Application();
 
-$application->add(
-    new \NapoleonCat\Command\FeedScanner()
-);
+$kernel = new Kernel('',false);
+$kernel->boot();
 
+$container = $kernel->getContainer();
+$application = $container->get(Application::class);
 $application->run();
