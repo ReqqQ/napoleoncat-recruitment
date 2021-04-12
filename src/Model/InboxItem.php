@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace NapoleonCat\Model;
 
 class InboxItem
@@ -15,6 +17,22 @@ class InboxItem
     private string $data;
     private ?InboxItemCollection $child = null;
 
+    public function __construct(
+        string $itemId,
+        string $pageSocialId,
+        int $itemType,
+        string $message,
+        int $createdAt,
+        ?string $item_parent
+    ) {
+        $this->item_id = $itemId;
+        $this->page_social_id = $pageSocialId;
+        $this->item_type = $itemType;
+        $this->data = $message;
+        $this->created_at = $createdAt;
+        $this->item_parent = $item_parent;
+    }
+
     /**
      * @param string $item_id
      * @return InboxItem
@@ -22,6 +40,7 @@ class InboxItem
     public function setItemId(string $item_id): InboxItem
     {
         $this->item_id = $item_id;
+
         return $this;
     }
 
@@ -32,6 +51,7 @@ class InboxItem
     public function setItemParent(?string $item_parent): InboxItem
     {
         $this->item_parent = $item_parent;
+
         return $this;
     }
 
@@ -42,6 +62,7 @@ class InboxItem
     public function setItemParentParent(?string $item_parent_parent): InboxItem
     {
         $this->item_parent_parent = $item_parent_parent;
+
         return $this;
     }
 
@@ -53,6 +74,7 @@ class InboxItem
     public function setPageSocialId(string $page_social_id): InboxItem
     {
         $this->page_social_id = $page_social_id;
+
         return $this;
     }
 
@@ -63,6 +85,7 @@ class InboxItem
     public function setAuthorSocialId(?string $author_social_id): InboxItem
     {
         $this->author_social_id = $author_social_id;
+
         return $this;
     }
 
@@ -73,6 +96,7 @@ class InboxItem
     public function setItemType(int $item_type): InboxItem
     {
         $this->item_type = $item_type;
+
         return $this;
     }
 
@@ -83,6 +107,7 @@ class InboxItem
     public function setCreatedAt(int $created_at): InboxItem
     {
         $this->created_at = $created_at;
+
         return $this;
     }
 
@@ -93,6 +118,7 @@ class InboxItem
     public function setUpdatedAt(?int $updated_at): InboxItem
     {
         $this->updated_at = $updated_at;
+
         return $this;
     }
 
@@ -103,6 +129,7 @@ class InboxItem
     public function setData(string $data): InboxItem
     {
         $this->data = $data;
+
         return $this;
     }
 
@@ -193,6 +220,7 @@ class InboxItem
     public function setChild(?InboxItemCollection $child): InboxItem
     {
         $this->child = $child;
+
         return $this;
     }
 

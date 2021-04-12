@@ -10,13 +10,19 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require 'E:\\napoleoncat-recruitment\\vendor/autoload.php';
-require __DIR__.'/ContainerNB6ZmDg/NapoleonCat_KernelContainer.php';
-require __DIR__.'/ContainerNB6ZmDg/getApplicationService.php';
+require __DIR__.'/ContainerXWc0YI2/NapoleonCat_KernelContainer.php';
+require __DIR__.'/ContainerXWc0YI2/getApplicationService.php';
+require __DIR__.'/ContainerXWc0YI2/getFacebookService.php';
 
 $classes = [];
+$classes[] = 'Facebook\Facebook';
 $classes[] = 'Symfony\Component\Console\Application';
 $classes[] = 'NapoleonCat\Command\FeedScanner';
 $classes[] = 'NapoleonCat\Services\PageScanner';
+$classes[] = 'NapoleonCat\Integrations\Facebook\FacebookService';
+$classes[] = 'NapoleonCat\Integrations\Facebook\Posts\PostsService';
+$classes[] = 'NapoleonCat\Integrations\Facebook\FacebookApi';
+$classes[] = 'NapoleonCat\Integrations\Facebook\Comments\CommentService';
 $classes[] = 'Symfony\Component\DependencyInjection\ContainerInterface';
 
 Preloader::preload($classes);

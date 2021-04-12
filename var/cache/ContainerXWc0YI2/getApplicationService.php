@@ -1,6 +1,6 @@
 <?php
 
-namespace ContainerNB6ZmDg;
+namespace ContainerXWc0YI2;
 
 use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
 use Symfony\Component\DependencyInjection\Exception\RuntimeException;
@@ -19,7 +19,9 @@ class getApplicationService extends NapoleonCat_KernelContainer
     {
         $container->services['Symfony\\Component\\Console\\Application'] = $instance = new \Symfony\Component\Console\Application();
 
-        $instance->add(new \NapoleonCat\Command\FeedScanner(new \NapoleonCat\Services\PageScanner()));
+        $a = new \NapoleonCat\Integrations\Facebook\FacebookApi($container->getEnv('APP_ID_ENV_NAME'), $container->getEnv('APP_SECRET_ENV_NAME'), $container->getEnv('LONG_TIME_TOKEN'));
+
+        $instance->add(new \NapoleonCat\Command\FeedScanner(new \NapoleonCat\Services\PageScanner(new \NapoleonCat\Integrations\Facebook\FacebookService(new \NapoleonCat\Integrations\Facebook\Posts\PostsService($a), new \NapoleonCat\Integrations\Facebook\Comments\CommentService($a))), $container->getEnv('APP_ID_ENV_NAME')));
 
         return $instance;
     }
