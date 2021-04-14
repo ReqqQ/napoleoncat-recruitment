@@ -19,7 +19,7 @@
         "symfony/config": "^5.2",
         "symfony/http-kernel": "^5.2",
         "guzzlehttp/guzzle": "^7.3",
-        "facebook/graph-sdk": "^5.1"
+        "facebook/graph-sdk": "^5.7.0"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",

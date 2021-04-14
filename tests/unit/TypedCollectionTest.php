@@ -13,9 +13,9 @@ class TypedCollectionTest extends Unit
     /**
      * @var TypedCollection|MockObject
      */
-    private $testCollection;
+    private TypedCollection|MockObject $testCollection;
 
-    protected function _before()
+    protected function _before(): void
     {
         parent::_before();
         $this->testCollection = new class extends TypedCollection {
@@ -28,29 +28,29 @@ class TypedCollectionTest extends Unit
     /**
      * Test type getter and setter.
      */
-    public function testType()
+    public function testType(): void
     {
         $type = InboxItem::class;
         $this->testCollection->setType($type);
-        $this->assertNotEmpty($this->testCollection->getType());
-        $this->assertEquals($type, $this->testCollection->getType());
+        self::assertNotEmpty($this->testCollection->getType());
+        self::assertEquals($type, $this->testCollection->getType());
     }
 
     /**
      * Test container getter and setter.
      */
-    public function testContainerAndMethods()
+    public function testContainerAndMethods(): void
     {
         $container = ['a', 'b', 'c', 'd'];
         $this->testCollection->setContainer($container);
-        $this->assertNotEmpty($this->testCollection->getContainer());
-        $this->assertEquals($container, $this->testCollection->getContainer());
+        self::assertNotEmpty($this->testCollection->getContainer());
+        self::assertEquals($container, $this->testCollection->getContainer());
     }
 
     /**
      * Test for exception.
      */
-    public function testExceptionForWrongClass()
+    public function testExceptionForWrongClass(): void
     {
         $this->testCollection->setType(InboxItem::class);
         $this->expectException(UnexpectedValueException::class);
@@ -60,29 +60,41 @@ class TypedCollectionTest extends Unit
     /**
      * Offset methods test.
      */
-    public function testMethodsForOffset()
+    public function testMethodsForOffset(): void
     {
         $this->testCollection->setType(InboxItem::class);
 
         $offsetName = 'firstUser';
-        $firstUser = new InboxItem();
+        $firstUser = $this->exampleInboxItemClass();
 
         $offsetSecond = 'secondUser';
-        $secondUser = new InboxItem();
+        $secondUser = $this->exampleInboxItemClass();
 
-        $this->assertFalse($this->testCollection->offsetExists($offsetName));
+        self::assertFalse($this->testCollection->offsetExists($offsetName));
         $this->testCollection->offsetSet($offsetName, $firstUser);
-        $this->assertTrue($this->testCollection->offsetExists($offsetName));
-        $this->assertEquals($firstUser, $this->testCollection->offsetGet($offsetName));
+        self::assertTrue($this->testCollection->offsetExists($offsetName));
+        self::assertEquals($firstUser, $this->testCollection->offsetGet($offsetName));
 
         $this->testCollection->add($secondUser);
-        $this->assertEquals(2, $this->testCollection->count());
+        self::assertEquals(2, $this->testCollection->count());
 
-        $this->assertEquals($firstUser, $this->testCollection->first());
+        self::assertEquals($firstUser, $this->testCollection->first());
 
         $this->testCollection->offsetUnset($offsetName);
-        $this->assertFalse($this->testCollection->offsetExists($offsetName));
+        self::assertFalse($this->testCollection->offsetExists($offsetName));
 
-        $this->assertEquals(1, $this->testCollection->count());
+        self::assertEquals(1, $this->testCollection->count());
+    }
+
+    private function exampleInboxItemClass(): InboxItem
+    {
+        return new InboxItem(
+            1,
+            3,
+            1,
+            'empty',
+            '2321',
+            '123'
+        );
     }
 }

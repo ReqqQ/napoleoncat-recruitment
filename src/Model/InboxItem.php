@@ -23,14 +23,14 @@ class InboxItem
         int $itemType,
         string $message,
         int $createdAt,
-        ?string $item_parent
+        ?string $itemParent
     ) {
         $this->item_id = $itemId;
         $this->page_social_id = $pageSocialId;
         $this->item_type = $itemType;
         $this->data = $message;
         $this->created_at = $createdAt;
-        $this->item_parent = $item_parent;
+        $this->item_parent = $itemParent;
     }
 
     /**

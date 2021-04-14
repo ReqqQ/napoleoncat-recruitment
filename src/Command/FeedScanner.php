@@ -16,7 +16,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 class FeedScanner extends Command
 {
     private const PAGE_SOCIAL_ARGUMENT = 'page_social_id';
-    //private const CURRENT_PAGE_ID = 104303108447809;
     private const SPACE_DECORATOR = '    ';
 
     private PageScanner $pageScannerService;
