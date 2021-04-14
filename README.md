@@ -1,3 +1,12 @@
+Use this to generate example feed in console from my page:
+``php app app:feed 104303108447809 -p``
+
+Remember to copy env from example.My sample env:
+
+``APP_ID_ENV_NAME=240047694533562``
+``APP_SECRET_ENV_NAME=c2e9f96d1a02b78818eb503987517ee6``
+``LONG_TIME_TOKEN=EAADaUnWP07oBAKlxduZBXSoG72UPlM57CNZCyr3rAbOqCpQipZBx9eY0g5jTOLzTmXsSRxUBxw7TwxKVgPyO9NrMtg9ThlZAFeaxES6ZCQxUh0dj8rIcjKo5S4mCLonswIIotLKWXAQ2hBgMe22EnOW50ULEF8AySqjvF1yZClrhpfirTjPFPV``
+
 #Facebook page feed scanner
 
 Implement facebook page feed scanner.  
