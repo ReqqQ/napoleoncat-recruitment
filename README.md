@@ -1,6 +1,10 @@
 Use this to generate example feed in console from my page:
 ``php app app:feed 104303108447809 -p``
 
+To install composer use :
+``composer install --ignore-platform-req=php``
+becouse one of the package(Facebook Graph ) don't have update PHP to version 8 
+
 Remember to copy env from example.My sample env:
 
 ``APP_ID_ENV_NAME=240047694533562``
